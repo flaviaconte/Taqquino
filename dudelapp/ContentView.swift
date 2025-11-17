@@ -9,19 +9,19 @@ import SwiftUI
 
 struct ContentView: View {
     var body: some View {
-        // 👇 1) AGGIUNTO: NavigationStack
         NavigationStack {
-            VStack(alignment: .leading, spacing: 15) {
+            VStack(alignment: .leading, spacing: 20) {
                 // Titolo
-                Text("Let's Dudel!")
+                Text("")
                     .font(.largeTitle)
                     .fontWeight(.bold)
                     .padding(.horizontal)
                     .padding(.top)
+                    .padding(.top, -100)
 
-                // Contenuto scrollabile
+                // Scrollable Content
                 ScrollView {
-                    VStack(spacing: 15) {
+                    VStack(spacing: 20) {
 
                         // 👇 2) AGGIUNTO: NavigationLink intorno alla prima card
                         NavigationLink {
@@ -29,26 +29,37 @@ struct ContentView: View {
                                 .frame(maxWidth: .infinity, maxHeight: .infinity)// 👉 va alla schermata di disegno
                         } label: {
                             DudelCard(
-                                label: "CHALLENGE",
-                                title: "Shape of the Day",
-                                height: 709,
-                                backgroundImageName: "challengeBg"   // 👈 nome esatto dell’asset
+                                label: "",
+                                title: "",
+                                height: 770,
+                                backgroundImageName: "taqquino1"   // 👈 nome esatto dell’asset
                             )
                         }
                         .buttonStyle(.plain)   // così la card non diventa “bottone blu”
 
-                        // Card PRACTICE -> apre la galleria
-                        NavigationLink {
-                            GalleryView()   // 👈 schermata con le thumbnail
-                        } label: {
-                            DudelCard(
-                                label: "PRACTICE",
-                                title: "Random Shapes",
-                                height: 404,
-                                backgroundImageName: "practice"
-                            )
+                        HStack(spacing: 20){
+                            // Card archive
+                            NavigationLink {
+                                GalleryView()   // 👈 schermata con le thumbnail
+                            } label: {
+                                VStack {
+                                    Image("taqquino2")
+                                        .resizable()
+                                        .frame(width: 484, height: 449)
+                                }
+                            }
+                            .buttonStyle(.plain)
+                            NavigationLink {
+                                GalleryView()   // 👈 schermata con le thumbnail
+                            } label: {
+                                VStack {
+                                    Image("taqquino3")
+                                        .resizable()
+                                        .frame(width: 484, height: 449)
+                                }
+                            }
+                            .buttonStyle(.plain)
                         }
-                        .buttonStyle(.plain)
                     }
                     .padding(.horizontal)
                     .padding(.bottom)
